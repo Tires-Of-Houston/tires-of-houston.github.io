@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tires of Houston | Tire Shop &amp; Auto Repair in Houston, TX</title>
+<meta name="description" content="Tires of Houston — tire shop & auto repair at 13125 Kuykendahl Rd, Houston, TX. New & used tires (specialists in hard-to-find sizes), tire repair, mobile tire service with balancing, suspension, starters, alternators, oil coolers, radiators, alignment, oil change, brakes. Open Mon–Sat 8:30–6:00. Call (281) 315-5000.">
+<meta property="og:title" content="Tires of Houston | Tire Shop & Auto Repair in Houston, TX">
+<meta property="og:description" content="Hard-to-find tires, tire repair, mobile tire service, suspension, starters, alternators, radiators & more. Mon–Sat 8:30 AM – 6:00 PM.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --red:#d62828; --red-dark:#a81f1f; --navy:#1e3a8a; --navy-dark:#152a66;
+  --char:#141414; --char2:#1e1e1e; --white:#ffffff; --gray:#c9c9c9; --light:#f4f4f4;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;color:var(--char);background:var(--white);line-height:1.6}
+h1,h2,h3,.osw{font-family:'Oswald',sans-serif;text-transform:uppercase;letter-spacing:.02em}
+a{text-decoration:none;color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+
+/* ---------- tread divider ---------- */
+.tread{height:26px;background:
+  repeating-linear-gradient(115deg,#141414 0 14px,#2b2b2b 14px 26px);
+  border-top:3px solid var(--red);border-bottom:3px solid var(--red);}
+.tread.blue{background:
+  repeating-linear-gradient(-115deg,var(--navy-dark) 0 14px,var(--navy) 14px 26px);
+  border-top:3px solid var(--white);border-bottom:3px solid var(--white);}
+
+/* ---------- nav ---------- */
+header{position:sticky;top:0;z-index:50;background:rgba(20,20,20,.97);border-bottom:3px solid var(--red)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.brand{display:flex;align-items:center;gap:10px}
+.brand-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.05rem;color:#fff;line-height:1.05}
+.brand-name b{color:var(--red)}
+.brand-name span{color:#fff}
+nav.links{display:none;gap:26px}
+nav.links a{color:#fff;font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em}
+nav.links a:hover{color:var(--red)}
+.callbtn{background:var(--red);color:#fff;font-weight:700;padding:10px 18px;border-radius:6px;font-size:.95rem;display:inline-block}
+.callbtn:hover{background:var(--red-dark)}
+.burger{display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger i{display:block;width:26px;height:3px;background:#fff}
+#mmenu{display:none;background:#1e1e1e;border-top:1px solid #333}
+#mmenu a{display:block;padding:14px 22px;color:#fff;font-weight:600;border-bottom:1px solid #2c2c2c;text-transform:uppercase;font-size:.9rem;letter-spacing:.05em}
+#mmenu.open{display:block}
+@media(min-width:820px){nav.links{display:flex}.burger,#mmenu{display:none}}
+
+/* ---------- hero ---------- */
+.hero{background:
+  linear-gradient(rgba(15,15,15,.93),rgba(15,15,15,.93)),
+  repeating-linear-gradient(115deg,#0a0a0a 0 26px,#181818 26px 52px);
+  color:#fff;padding:72px 0 64px;text-align:center}
+.hero .kicker{display:inline-block;background:var(--navy);color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.12em;padding:7px 16px;border-radius:4px;margin-bottom:18px;text-transform:uppercase}
+.hero h1{font-size:clamp(2.4rem,8vw,4.6rem);font-weight:700;line-height:1.02;margin-bottom:14px}
+.hero h1 .r{color:var(--red)}
+.hero p.sub{color:var(--gray);font-size:1.08rem;max-width:640px;margin:0 auto 28px}
+.hero p.sub b{color:#fff}
+.cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-bottom:30px}
+.btn-red{background:var(--red);color:#fff;font-weight:700;padding:15px 30px;border-radius:8px;font-size:1.05rem;display:inline-block;border:2px solid var(--red)}
+.btn-red:hover{background:var(--red-dark);border-color:var(--red-dark)}
+.btn-ghost{border:2px solid #fff;color:#fff;font-weight:700;padding:15px 30px;border-radius:8px;font-size:1.05rem;display:inline-block}
+.btn-ghost:hover{background:#fff;color:#141414}
+.chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.chip{border:1px solid #444;border-radius:20px;padding:7px 15px;font-size:.83rem;color:#ddd;font-weight:600;background:rgba(255,255,255,.04)}
+.chip b{color:#fff}
+
+/* ---------- sections ---------- */
+section{padding:56px 0}
+.sec-head{text-align:center;margin-bottom:34px}
+.sec-head .eyebrow{display:inline-block;color:var(--red);font-weight:700;letter-spacing:.14em;font-size:.8rem;text-transform:uppercase;margin-bottom:8px}
+.sec-head h2{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:700}
+.sec-head p{color:#555;max-width:620px;margin:10px auto 0}
+
+/* ---------- services ---------- */
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:620px){.grid{grid-template-columns:1fr 1fr}}
+@media(min-width:940px){.grid{grid-template-columns:1fr 1fr 1fr}}
+.card{background:#fff;border:1px solid #e3e3e3;border-top:5px solid var(--red);border-radius:10px;padding:24px 20px;transition:transform .15s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 24px rgba(0,0,0,.08)}
+.card .ic{width:48px;height:48px;margin-bottom:14px}
+.card h3{font-size:1.12rem;margin-bottom:6px}
+.card p{color:#555;font-size:.94rem}
+.card.hero-card{background:var(--char);color:#fff;border-top-color:var(--navy);border-color:#333}
+.card.hero-card p{color:var(--gray)}
+.card.hero-card .tag{display:inline-block;background:var(--red);color:#fff;font-size:.72rem;font-weight:700;letter-spacing:.1em;padding:4px 10px;border-radius:4px;margin-bottom:10px;text-transform:uppercase}
+
+/* ---------- mobile spotlight ---------- */
+.mobile{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:#fff;text-align:center}
+.mobile h2{font-size:clamp(2rem,7vw,3.2rem);font-weight:700;margin-bottom:8px}
+.mobile h2 .r{color:#ff5a5a}
+.mobile p.lead{max-width:640px;margin:0 auto 30px;color:#dbe2ff;font-size:1.08rem}
+.mfeat{display:grid;grid-template-columns:1fr;gap:14px;max-width:860px;margin:0 auto 30px;text-align:left}
+@media(min-width:700px){.mfeat{grid-template-columns:1fr 1fr 1fr}}
+.mbox{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.22);border-radius:10px;padding:22px 18px}
+.mbox h3{font-size:1.05rem;margin-bottom:6px;color:#fff}
+.mbox p{font-size:.92rem;color:#cdd6f7}
+
+/* ---------- why us ---------- */
+.why{background:var(--light)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(min-width:760px){.why-grid{grid-template-columns:1fr 1fr 1fr 1fr}}
+.why-item{background:#fff;border-radius:10px;padding:24px 18px;text-align:center;border:1px solid #e3e3e3}
+.why-item .n{font-family:'Oswald',sans-serif;font-size:2rem;font-weight:700;color:var(--red)}
+.why-item h3{font-size:1rem;margin:8px 0 4px}
+.why-item p{font-size:.88rem;color:#555}
+
+/* ---------- reviews ---------- */
+.rev-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:760px){.rev-grid{grid-template-columns:1fr 1fr}}
+.rev{background:#fff;border:1px solid #e3e3e3;border-radius:10px;padding:24px 20px}
+.rev .stars{color:#f5a623;font-size:1.1rem;letter-spacing:2px;margin-bottom:10px}
+.rev p{font-size:.96rem;color:#333;margin-bottom:12px}
+.rev .who{font-weight:700;font-size:.9rem}
+.rev .src{font-size:.78rem;color:#888}
+.gnote{text-align:center;margin-top:24px;color:#555;font-size:.95rem}
+.gnote b{color:var(--char)}
+
+/* ---------- contact ---------- */
+.contact{background:var(--char);color:#fff}
+.contact .sec-head p{color:var(--gray)}
+.c-grid{display:grid;grid-template-columns:1fr;gap:26px;margin-bottom:30px}
+@media(min-width:820px){.c-grid{grid-template-columns:1fr 1fr}}
+.c-box h3{font-size:1.1rem;color:var(--red);margin-bottom:12px}
+.c-box p,.c-box a{color:#ddd}
+.phone-big{font-family:'Oswald',sans-serif;font-size:clamp(1.8rem,6vw,2.6rem);font-weight:700;color:#fff;display:block;margin:6px 0 14px}
+.phone-big:hover{color:var(--red)}
+table.hours{width:100%;border-collapse:collapse;max-width:340px}
+table.hours td{padding:9px 4px;border-bottom:1px solid #333;font-size:.95rem;color:#ddd}
+table.hours td:last-child{text-align:right;font-weight:600;color:#fff}
+.map{border:0;width:100%;height:320px;border-radius:10px}
+
+/* ---------- footer ---------- */
+footer{background:#0c0c0c;color:#999;text-align:center;padding:26px 16px;font-size:.86rem}
+footer a{color:#ccc}
+footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.05em}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Tires of Houston home">
+      <svg width="52" height="52" viewBox="0 0 64 64" role="img" aria-label="Tires of Houston logo">
+        <circle cx="32" cy="32" r="30" fill="#141414" stroke="#000" stroke-width="2"/>
+        <circle cx="32" cy="32" r="26" fill="none" stroke="#333" stroke-width="6" stroke-dasharray="6 4"/>
+        <circle cx="32" cy="32" r="19" fill="#fff"/>
+        <text x="32" y="28" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="700" font-size="9.5" fill="#d62828">TIRES</text>
+        <text x="32" y="37" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="700" font-size="6.5" fill="#1e3a8a">OF</text>
+        <text x="32" y="47" text-anchor="middle" font-family="Oswald,sans-serif" font-weight="700" font-size="9.5" fill="#d62828">HOUSTON</text>
+      </svg>
+      <span class="brand-name"><b>TIRES</b> <span>OF</span> <b>HOUSTON</b></span>
+    </a>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#mobile">Mobile</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" aria-label="Tires of Houston on Facebook" style="display:inline-flex;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg></a>
+    </nav>
+    <a class="callbtn" href="tel:+12813155000">Call Now</a>
+    <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+  <div id="mmenu">
+    <a href="#services">Services</a>
+    <a href="#mobile">Mobile Service</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+12813155000">Call (281) 315-5000</a>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <div class="wrap">
+    <span class="kicker">Tire Shop &amp; Auto Repair — Houston, TX</span>
+    <h1>Houston's <span class="r">Tire</span> &amp; <span class="r">Repair</span> Shop</h1>
+    <p class="sub">Huge in-stock inventory of <b>new &amp; used tires in all sizes</b> — specialists in <b>hard-to-find tires</b>. Plus full light repair, and a <b>mobile tire service that comes to you</b>.</p>
+    <div class="cta-row">
+      <a class="btn-red" href="tel:+12813155000">Call (281) 315-5000</a>
+      <a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Tires+of+Houston+13125+Kuykendahl+Rd+Houston+TX+77090" target="_blank" rel="noopener">Get Directions</a>
+    </div>
+    <div class="chips">
+      <span class="chip"><b>Open</b> Mon–Sat 8:30–6</span>
+      <span class="chip"><b>Hard-to-find</b> tires in stock</span>
+      <span class="chip"><b>Mobile</b> tire service</span>
+    </div>
+    <div style="margin-top:22px">
+      <a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:#ddd;font-weight:600;font-size:.95rem"><svg width="22" height="22" viewBox="0 0 24 24" fill="#d62828"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg> Follow us on Facebook</a>
+    </div>
+  </div>
+</div>
+
+<div class="tread"></div>
+
+<section id="services">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">What we do</span>
+      <h2>Services</h2>
+      <p>Tires, repair, and maintenance — done fast, done right, at a fair price.</p>
+    </div>
+    <div class="grid">
+      <div class="card hero-card">
+        <span class="tag">Our Specialty</span>
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#d62828" stroke-width="4"/><circle cx="24" cy="24" r="11" stroke="#fff" stroke-width="4"/><circle cx="24" cy="24" r="4" fill="#fff"/></svg>
+        <h3>New &amp; Used Tires</h3>
+        <p>All sizes, huge in-stock inventory — and we specialize in hard-to-find tires other shops can't get.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#d62828" stroke-width="4"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="24" r="5" fill="#1e3a8a"/></svg>
+        <h3>Tire Repair</h3>
+        <p>Flats fixed fast — professional patches and plugs that get you back on the road safely.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="20" rx="4" stroke="#d62828" stroke-width="4"/><circle cx="16" cy="34" r="4" fill="#1e3a8a"/><circle cx="32" cy="34" r="4" fill="#1e3a8a"/><path d="M12 14l4-8h16l4 8" stroke="#1e3a8a" stroke-width="4"/></svg>
+        <h3>Mobile Tire Service</h3>
+        <p>Stuck at home, work, or roadside? We come to you — mobile tire change, repair, and balancing.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><path d="M10 38V20l14-8 14 8v18" stroke="#d62828" stroke-width="4" fill="none"/><path d="M24 12v26" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="38" r="4" fill="#1e3a8a"/></svg>
+        <h3>Suspension Parts</h3>
+        <p>Shocks, struts, control arms and more — replaced and installed so your ride feels right again.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="10" y="16" width="28" height="16" rx="3" stroke="#d62828" stroke-width="4"/><path d="M18 16v-6M30 16v-6M18 32v6M30 32v6" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="24" r="4" fill="#1e3a8a"/></svg>
+        <h3>Starter &amp; Alternator</h3>
+        <p>Won't start? Dead battery every morning? We replace starters and alternators same-day.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><path d="M14 8h20v10l6 6v16H8V24l6-6V8z" stroke="#d62828" stroke-width="4" fill="none"/><path d="M18 24h12M18 30h12" stroke="#1e3a8a" stroke-width="3"/></svg>
+        <h3>Oil Coolers</h3>
+        <p>Leaking or failing oil cooler? We replace them to keep your engine running cool and protected.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="10" y="12" width="28" height="24" rx="3" stroke="#d62828" stroke-width="4"/><path d="M16 12v24M24 12v24M32 12v24" stroke="#1e3a8a" stroke-width="3"/></svg>
+        <h3>Radiators</h3>
+        <p>Overheating or coolant leaks — new radiator installed so your engine stays in the safe zone.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#d62828" stroke-width="4"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="24" r="6" fill="#1e3a8a"/></svg>
+        <h3>Wheel Alignment</h3>
+        <p>Precise alignments that stop uneven tire wear and keep your car tracking straight.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><path d="M20 6h8v10l8 8v18H12V24l8-8V6z" stroke="#d62828" stroke-width="4" fill="none"/><path d="M18 30h12" stroke="#1e3a8a" stroke-width="4"/></svg>
+        <h3>Oil Change</h3>
+        <p>Quick, affordable oil changes to keep your engine clean and running strong.</p>
+      </div>
+      <div class="card">
+        <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#d62828" stroke-width="4"/><circle cx="24" cy="24" r="8" stroke="#1e3a8a" stroke-width="4"/><path d="M24 16v-6" stroke="#1e3a8a" stroke-width="4"/></svg>
+        <h3>Brakes</h3>
+        <p>Pads, rotors, and brake service — stop with confidence every single time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tread blue"></div>
+
+<section class="mobile" id="mobile">
+  <div class="wrap">
+    <span class="kicker" style="background:#d62828">Mobile Service</span>
+    <h2>We <span class="r">Come</span> To You</h2>
+    <p class="lead">Flat at home? Blowout at work? Stuck on the roadside? Our mobile tire service brings the shop to you — including a <strong>mobile balancing machine</strong>, so your tires are mounted and balanced right there on the spot.</p>
+    <div class="mfeat">
+      <div class="mbox">
+        <h3>Mobile Tire Change</h3>
+        <p>New or used tires installed at your location — same inventory, same fair prices, zero trip to the shop.</p>
+      </div>
+      <div class="mbox">
+        <h3>Mobile Tire Repair</h3>
+        <p>Flat fixed wherever you're parked. Professional patch or plug service on-site.</p>
+      </div>
+      <div class="mbox">
+        <h3>Mobile Balancing</h3>
+        <p>Our van carries a balancing machine — your tires are balanced properly before we leave.</p>
+      </div>
+    </div>
+    <a class="btn-red" href="tel:+12813155000">Call for Mobile Service</a>
+  </div>
+</section>
+
+<div class="tread"></div>
+
+<section class="why" id="why">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Why choose us</span>
+      <h2>Why Tires of Houston</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="n">01</div>
+        <h3>Big Inventory</h3>
+        <p>We carry a lot of inventory of all sizes of tires — in stock and ready to mount.</p>
+      </div>
+      <div class="why-item">
+        <div class="n">02</div>
+        <h3>Hard-to-Find Specialty</h3>
+        <p>Our specialty is hard-to-find tires other shops can't track down. If it exists, we'll find it.</p>
+      </div>
+      <div class="why-item">
+        <div class="n">03</div>
+        <h3>Fair Prices</h3>
+        <p>Negotiable, honest pricing — customers say we're the best price in town.</p>
+      </div>
+      <div class="why-item">
+        <div class="n">04</div>
+        <h3>Friendly Service</h3>
+        <p>A helpful owner and crew who do a fantastic job and treat you right.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Word on the street</span>
+      <h2>Customer Reviews</h2>
+      <p>Real reviews from our Facebook page.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Satisfied with tire check, praised friendly customer service."</p>
+        <div class="who">Ebony Whitmire</div>
+        <div class="src">via Facebook — recommends Tires of Houston</div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Ill never buy tires anywhere else. This place is awesome."</p>
+        <div class="who">David Whitaker</div>
+        <div class="src">via Facebook — recommends Tires of Houston</div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Awesome owner and best Price in town very negotiable and helpful."</p>
+        <div class="who">Stack Sanchez</div>
+        <div class="src">via Facebook — recommends Tires of Houston</div>
+      </div>
+      <div class="rev">
+        <div class="stars">★★★★★</div>
+        <p>"Great customer service. They are very helpful &amp; do a fantastic job."</p>
+        <div class="who">Juan C Herrera</div>
+        <div class="src">via Facebook — recommends Tires of Houston</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tread"></div>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Visit us</span>
+      <h2>Get In Touch</h2>
+      <p>Walk-ins welcome. Call ahead for mobile service or to check tire availability.</p>
+    </div>
+    <div class="c-grid">
+      <div class="c-box">
+        <h3>Call or Email</h3>
+        <a class="phone-big" href="tel:+12813155000">(281) 315-5000</a>
+        <p><a href="mailto:tiresofhouston@gmail.com">tiresofhouston@gmail.com</a></p>
+        <p style="margin-top:14px"><a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" style="color:#fff;font-weight:600">Find us on Facebook →</a></p>
+        <h3 style="margin-top:24px">Hours</h3>
+        <table class="hours">
+          <tr><td>Monday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td>Tuesday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td>Wednesday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td>Thursday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td>Friday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td>Saturday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td>Sunday</td><td>Closed</td></tr>
+        </table>
+      </div>
+      <div class="c-box">
+        <h3>Address</h3>
+        <p>13125 Kuykendahl Rd<br>Houston, TX 77090</p>
+        <p style="margin:14px 0"><a class="btn-ghost" style="padding:12px 24px;font-size:.95rem" href="https://www.google.com/maps/search/?api=1&amp;query=Tires+of+Houston+13125+Kuykendahl+Rd+Houston+TX+77090" target="_blank" rel="noopener">Get Directions</a></p>
+        <iframe class="map" title="Map to Tires of Houston" src="https://www.google.com/maps?q=13125+Kuykendahl+Rd+Houston+TX+77090&amp;output=embed" loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fbrand">TIRES OF HOUSTON</div>
+    <p>13125 Kuykendahl Rd, Houston, TX 77090 · <a href="tel:+12813155000">(281) 315-5000</a></p>
+    <p>© 2026 Tires of Houston. Site built for the shop.</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('burger'),m=document.getElementById('mmenu');
+  b.addEventListener('click',function(){m.classList.toggle('open');});
+  m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');});});
+})();
+</script>
+</body>
+</html>
