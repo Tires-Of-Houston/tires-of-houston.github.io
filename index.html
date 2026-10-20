@@ -31,6 +31,14 @@ a{text-decoration:none;color:inherit}
   repeating-linear-gradient(-115deg,var(--navy-dark) 0 14px,var(--navy) 14px 26px);
   border-top:3px solid var(--white);border-bottom:3px solid var(--white);}
 
+/* ---------- brand marquee ---------- */
+.brands{background:#0b0b0d;border-bottom:2px solid var(--red);overflow:hidden;white-space:nowrap;padding:7px 0;position:relative;z-index:60}
+.brands .track{display:inline-block;white-space:nowrap;animation:scrollX 32s linear infinite;will-change:transform}
+.brands span{font-family:'Oswald',sans-serif;font-weight:600;font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;color:#cfcfcf;padding:0 18px;position:relative}
+.brands span::after{content:"•";color:var(--red);position:absolute;right:-4px}
+@keyframes scrollX{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@media(prefers-reduced-motion:reduce){.brands .track{animation:none}}
+
 /* ---------- nav ---------- */
 header{position:sticky;top:0;z-index:50;background:rgba(20,20,20,.97);border-bottom:3px solid var(--red)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:8px}
@@ -200,6 +208,7 @@ html[dir="rtl"] .lang-btn .native{text-align:right}
   </div>
 </div>
 
+<div class="brands" aria-hidden="true"><div class="track"><span>Michelin</span><span>Bridgestone</span><span>Goodyear</span><span>Continental</span><span>Pirelli</span><span>Hankook</span><span>Yokohama</span><span>Toyo Tires</span><span>Cooper</span><span>BFGoodrich</span><span>Firestone</span><span>Dunlop</span><span>Kumho</span><span>Falken</span><span>Nitto</span><span>Michelin</span><span>Bridgestone</span><span>Goodyear</span><span>Continental</span><span>Pirelli</span><span>Hankook</span><span>Yokohama</span><span>Toyo Tires</span><span>Cooper</span><span>BFGoodrich</span><span>Firestone</span><span>Dunlop</span><span>Kumho</span><span>Falken</span><span>Nitto</span></div></div>
 <header>
   <div class="wrap nav">
     <a class="brand" href="#top" aria-label="Tires of Houston home">
@@ -752,13 +761,9 @@ html[dir="rtl"] .lang-btn .native{text-align:right}
 
   var saved=null;
   try{saved=localStorage.getItem('toh-lang');}catch(e){}
-  if(saved&&I18N[saved]){
-    applyLang(saved);
-    modal.classList.add('hidden');
-  }else{
-    document.body.classList.add('modal-open');
-    applyLang('en');
-  }
+  applyLang(saved&&I18N[saved]?saved:'en');
+  document.body.classList.add('modal-open');
+  modal.classList.remove('hidden');
 })();
 </script>
 </body>
