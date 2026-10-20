@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600;700&family=Noto+Sans+Arabic:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --red:#d62828; --red-dark:#a81f1f; --navy:#1e3a8a; --navy-dark:#152a66;
@@ -33,22 +33,34 @@ a{text-decoration:none;color:inherit}
 
 /* ---------- nav ---------- */
 header{position:sticky;top:0;z-index:50;background:rgba(20,20,20,.97);border-bottom:3px solid var(--red)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-.brand{display:flex;align-items:center;gap:10px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:8px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand-name{font-family:'Oswald',sans-serif;font-weight:700;font-size:1.05rem;color:#fff;line-height:1.05}
 .brand-name b{color:var(--red)}
 .brand-name span{color:#fff}
 nav.links{display:none;gap:26px}
 nav.links a{color:#fff;font-weight:600;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em}
 nav.links a:hover{color:var(--red)}
-.callbtn{background:var(--red);color:#fff;font-weight:700;padding:10px 18px;border-radius:6px;font-size:.95rem;display:inline-block}
+.h-actions{display:flex;align-items:center;gap:8px;margin-left:auto;flex:0 0 auto}
+.fb-btn{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:#1877f2;border:2px solid #1877f2;transition:transform .15s,background .15s}
+.fb-btn:hover{background:#0f5fd0;transform:translateY(-1px)}
+.lang-switch{flex:0 0 auto;display:inline-flex;align-items:center;gap:6px;background:#1e1e1e;border:1px solid #444;color:#fff;border-radius:20px;padding:8px 12px;font-size:.8rem;font-weight:700;cursor:pointer}
+.lang-switch:hover{border-color:var(--red)}
+.callbtn{background:var(--red);color:#fff;font-weight:700;padding:10px 18px;border-radius:6px;font-size:.95rem;display:inline-block;white-space:nowrap}
 .callbtn:hover{background:var(--red-dark)}
-.burger{display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px}
+.burger{display:flex;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:8px;flex:0 0 auto}
 .burger i{display:block;width:26px;height:3px;background:#fff}
 #mmenu{display:none;background:#1e1e1e;border-top:1px solid #333}
 #mmenu a{display:block;padding:14px 22px;color:#fff;font-weight:600;border-bottom:1px solid #2c2c2c;text-transform:uppercase;font-size:.9rem;letter-spacing:.05em}
 #mmenu.open{display:block}
 @media(min-width:820px){nav.links{display:flex}.burger,#mmenu{display:none}}
+@media(max-width:480px){
+  .callbtn{padding:9px 12px;font-size:.82rem}
+  .brand-name{font-size:.88rem}
+  .h-actions{gap:6px}
+  .lang-switch{padding:7px 9px;font-size:.75rem}
+  .fb-btn{width:34px;height:34px}
+}
 
 /* ---------- hero ---------- */
 .hero{background:
@@ -138,9 +150,55 @@ table.hours td:last-child{text-align:right;font-weight:600;color:#fff}
 footer{background:#0c0c0c;color:#999;text-align:center;padding:26px 16px;font-size:.86rem}
 footer a{color:#ccc}
 footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter-spacing:.05em}
+
+/* ---------- language modal ---------- */
+body.modal-open{overflow:hidden}
+#lang-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;background:rgba(8,8,8,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);padding:20px;transition:opacity .3s}
+#lang-modal.hidden{opacity:0;pointer-events:none}
+.lang-card{background:#141414;border:1px solid #2c2c2c;border-top:5px solid var(--red);border-radius:18px;max-width:460px;width:100%;max-height:92vh;overflow-y:auto;padding:36px 28px;text-align:center;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lang-card h2{color:#fff;font-size:1.55rem;margin-bottom:8px}
+.lang-subs{color:#999;font-size:.85rem;line-height:2;margin-bottom:4px}
+.lang-subs span{display:block}
+.tread-mini{height:14px;background:repeating-linear-gradient(115deg,#0a0a0a 0 10px,#232323 10px 20px);border-top:2px solid var(--red);border-bottom:2px solid var(--red);border-radius:4px;margin:16px 0 22px}
+.lang-btns{display:flex;flex-direction:column;gap:10px}
+.lang-btn{display:flex;align-items:center;gap:12px;background:#1e1e1e;border:1px solid #333;border-radius:12px;padding:13px 18px;color:#fff;cursor:pointer;width:100%;transition:border-color .15s,background .15s,transform .15s}
+.lang-btn:hover,.lang-btn:focus{border-color:var(--red);background:#262626;transform:translateY(-1px);outline:none}
+.lang-btn .native{font-weight:700;font-size:1.15rem;flex:1;text-align:left}
+.lang-btn .en{color:#888;font-size:.8rem}
+.lang-btn .tick{color:var(--red);font-weight:800;font-size:1.1rem;visibility:hidden;flex:0 0 auto}
+.lang-btn.current{border-color:var(--red)}
+.lang-btn.current .tick{visibility:visible}
+
+/* ---------- RTL + Urdu font ---------- */
+html[lang="ur"] body{font-family:'Noto Sans Arabic','Inter',system-ui,sans-serif}
+html[lang="ur"] h1,html[lang="ur"] h2,html[lang="ur"] h3,html[lang="ur"] .osw,html[lang="ur"] .brand-name,html[lang="ur"] .phone-big,html[lang="ur"] .lang-card h2{font-family:'Noto Sans Arabic','Oswald',sans-serif}
+html[dir="rtl"] #mmenu a{text-align:right}
+html[dir="rtl"] table.hours td:last-child{text-align:left}
+html[dir="rtl"] .mfeat{text-align:right}
+html[dir="rtl"] .lang-btn .native{text-align:right}
 </style>
 </head>
 <body>
+
+<div id="lang-modal" role="dialog" aria-modal="true" aria-label="Choose your language">
+  <div class="lang-card">
+    <h2>Choose Your Language</h2>
+    <div class="lang-subs">
+      <span lang="es">Elige tu idioma</span>
+      <span lang="ur" dir="rtl">اپنی زبان منتخب کریں</span>
+      <span lang="zh-CN">选择您的语言</span>
+      <span lang="vi">Chọn ngôn ngữ của bạn</span>
+    </div>
+    <div class="tread-mini"></div>
+    <div class="lang-btns">
+      <button type="button" class="lang-btn" data-lang="en"><span class="native">English</span><span class="tick">✓</span></button>
+      <button type="button" class="lang-btn" data-lang="es"><span class="native" lang="es">Español</span><span class="en">Spanish</span><span class="tick">✓</span></button>
+      <button type="button" class="lang-btn" data-lang="ur"><span class="native" lang="ur" dir="rtl">اردو</span><span class="en">Urdu</span><span class="tick">✓</span></button>
+      <button type="button" class="lang-btn" data-lang="zh"><span class="native" lang="zh-CN">中文</span><span class="en">Chinese</span><span class="tick">✓</span></button>
+      <button type="button" class="lang-btn" data-lang="vi"><span class="native" lang="vi">Tiếng Việt</span><span class="en">Vietnamese</span><span class="tick">✓</span></button>
+    </div>
+  </div>
+</div>
 
 <header>
   <div class="wrap nav">
@@ -156,40 +214,44 @@ footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter
       <span class="brand-name"><b>TIRES</b> <span>OF</span> <b>HOUSTON</b></span>
     </a>
     <nav class="links">
-      <a href="#services">Services</a>
-      <a href="#mobile">Mobile</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#contact">Contact</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#mobile" data-i18n="nav.mobile">Mobile</a>
+      <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
       <a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" aria-label="Tires of Houston on Facebook" style="display:inline-flex;align-items:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg></a>
     </nav>
-    <a class="callbtn" href="tel:+12813155000">Call Now</a>
+    <div class="h-actions">
+      <a class="fb-btn" href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" aria-label="Tires of Houston on Facebook"><svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg></a>
+      <button type="button" class="lang-switch" id="lang-switch" aria-label="Change language"><span aria-hidden="true">🌐</span><span id="lang-cur">EN</span></button>
+      <a class="callbtn" href="tel:+12813155000" data-i18n="nav.call">Call Now</a>
+    </div>
     <button class="burger" id="burger" aria-label="Menu"><i></i><i></i><i></i></button>
   </div>
   <div id="mmenu">
-    <a href="#services">Services</a>
-    <a href="#mobile">Mobile Service</a>
-    <a href="#reviews">Reviews</a>
-    <a href="#contact">Contact</a>
-    <a href="tel:+12813155000">Call (281) 315-5000</a>
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#mobile" data-i18n="menu.mobile">Mobile Service</a>
+    <a href="#reviews" data-i18n="nav.reviews">Reviews</a>
+    <a href="#contact" data-i18n="nav.contact">Contact</a>
+    <a href="tel:+12813155000" data-i18n="menu.call">Call (281) 315-5000</a>
   </div>
 </header>
 
 <div class="hero" id="top">
   <div class="wrap">
-    <span class="kicker">Tire Shop &amp; Auto Repair — Houston, TX</span>
-    <h1>Houston's <span class="r">Tire</span> &amp; <span class="r">Repair</span> Shop</h1>
-    <p class="sub">Huge in-stock inventory of <b>new &amp; used tires in all sizes</b> — specialists in <b>hard-to-find tires</b>. Plus full light repair, and a <b>mobile tire service that comes to you</b>.</p>
+    <span class="kicker" data-i18n="hero.kicker">Tire Shop &amp; Auto Repair — Houston, TX</span>
+    <h1 data-i18n-html="hero.h1">Houston's <span class="r">Tire</span> &amp; <span class="r">Repair</span> Shop</h1>
+    <p class="sub" data-i18n-html="hero.sub">Huge in-stock inventory of <b>new &amp; used tires in all sizes</b> — specialists in <b>hard-to-find tires</b>. Plus full light repair, and a <b>mobile tire service that comes to you</b>.</p>
     <div class="cta-row">
-      <a class="btn-red" href="tel:+12813155000">Call (281) 315-5000</a>
-      <a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Tires+of+Houston+13125+Kuykendahl+Rd+Houston+TX+77090" target="_blank" rel="noopener">Get Directions</a>
+      <a class="btn-red" href="tel:+12813155000" data-i18n="hero.call">Call (281) 315-5000</a>
+      <a class="btn-ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Tires+of+Houston+13125+Kuykendahl+Rd+Houston+TX+77090" target="_blank" rel="noopener" data-i18n="hero.dir">Get Directions</a>
     </div>
     <div class="chips">
-      <span class="chip"><b>Open</b> Mon–Sat 8:30–6</span>
-      <span class="chip"><b>Hard-to-find</b> tires in stock</span>
-      <span class="chip"><b>Mobile</b> tire service</span>
+      <span class="chip" data-i18n-html="hero.chip1"><b>Open</b> Mon–Sat 8:30–6</span>
+      <span class="chip" data-i18n-html="hero.chip2"><b>Hard-to-find</b> tires in stock</span>
+      <span class="chip" data-i18n-html="hero.chip3"><b>Mobile</b> tire service</span>
     </div>
     <div style="margin-top:22px">
-      <a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:#ddd;font-weight:600;font-size:.95rem"><svg width="22" height="22" viewBox="0 0 24 24" fill="#d62828"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg> Follow us on Facebook</a>
+      <a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:8px;color:#ddd;font-weight:600;font-size:.95rem"><svg width="22" height="22" viewBox="0 0 24 24" fill="#d62828"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.7c0-.9.3-1.6 1.6-1.6h1.7V4.2c-.3 0-1.3-.1-2.5-.1-2.5 0-4.2 1.5-4.2 4.3v2.4H7.4V14h2.7v8h3.4z"/></svg> <span data-i18n="hero.fb">Follow us on Facebook</span></a>
     </div>
   </div>
 </div>
@@ -199,61 +261,61 @@ footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter
 <section id="services">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">What we do</span>
-      <h2>Services</h2>
-      <p>Tires, repair, and maintenance — done fast, done right, at a fair price.</p>
+      <span class="eyebrow" data-i18n="svc.eyebrow">What we do</span>
+      <h2 data-i18n="svc.h2">Services</h2>
+      <p data-i18n="svc.sub">Tires, repair, and maintenance — done fast, done right, at a fair price.</p>
     </div>
     <div class="grid">
       <div class="card hero-card">
-        <span class="tag">Our Specialty</span>
+        <span class="tag" data-i18n="svc.tag">Our Specialty</span>
         <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#d62828" stroke-width="4"/><circle cx="24" cy="24" r="11" stroke="#fff" stroke-width="4"/><circle cx="24" cy="24" r="4" fill="#fff"/></svg>
-        <h3>New &amp; Used Tires</h3>
-        <p>All sizes, huge in-stock inventory — and we specialize in hard-to-find tires other shops can't get.</p>
+        <h3 data-i18n="svc1.t">New &amp; Used Tires</h3>
+        <p data-i18n="svc1.d">All sizes, huge in-stock inventory — and we specialize in hard-to-find tires other shops can't get.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="20" stroke="#d62828" stroke-width="4"/><path d="M24 4v8M24 36v8M4 24h8M36 24h8" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="24" r="5" fill="#1e3a8a"/></svg>
-        <h3>Tire Repair</h3>
-        <p>Flats fixed fast — professional patches and plugs that get you back on the road safely.</p>
+        <h3 data-i18n="svc2.t">Tire Repair</h3>
+        <p data-i18n="svc2.d">Flats fixed fast — professional patches and plugs that get you back on the road safely.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="8" y="14" width="32" height="20" rx="4" stroke="#d62828" stroke-width="4"/><circle cx="16" cy="34" r="4" fill="#1e3a8a"/><circle cx="32" cy="34" r="4" fill="#1e3a8a"/><path d="M12 14l4-8h16l4 8" stroke="#1e3a8a" stroke-width="4"/></svg>
-        <h3>Mobile Tire Service</h3>
-        <p>Stuck at home, work, or roadside? We come to you — mobile tire change, repair, and balancing.</p>
+        <h3 data-i18n="svc3.t">Mobile Tire Service</h3>
+        <p data-i18n="svc3.d">Stuck at home, work, or roadside? We come to you — mobile tire change, repair, and balancing.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><path d="M10 38V20l14-8 14 8v18" stroke="#d62828" stroke-width="4" fill="none"/><path d="M24 12v26" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="38" r="4" fill="#1e3a8a"/></svg>
-        <h3>Suspension Parts</h3>
-        <p>Shocks, struts, control arms and more — replaced and installed so your ride feels right again.</p>
+        <h3 data-i18n="svc4.t">Suspension Parts</h3>
+        <p data-i18n="svc4.d">Shocks, struts, control arms and more — replaced and installed so your ride feels right again.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="10" y="16" width="28" height="16" rx="3" stroke="#d62828" stroke-width="4"/><path d="M18 16v-6M30 16v-6M18 32v6M30 32v6" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="24" r="4" fill="#1e3a8a"/></svg>
-        <h3>Starter &amp; Alternator</h3>
-        <p>Won't start? Dead battery every morning? We replace starters and alternators same-day.</p>
+        <h3 data-i18n="svc5.t">Starter &amp; Alternator</h3>
+        <p data-i18n="svc5.d">Won't start? Dead battery every morning? We replace starters and alternators same-day.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><path d="M14 8h20v10l6 6v16H8V24l6-6V8z" stroke="#d62828" stroke-width="4" fill="none"/><path d="M18 24h12M18 30h12" stroke="#1e3a8a" stroke-width="3"/></svg>
-        <h3>Oil Coolers</h3>
-        <p>Leaking or failing oil cooler? We replace them to keep your engine running cool and protected.</p>
+        <h3 data-i18n="svc6.t">Oil Coolers</h3>
+        <p data-i18n="svc6.d">Leaking or failing oil cooler? We replace them to keep your engine running cool and protected.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><rect x="10" y="12" width="28" height="24" rx="3" stroke="#d62828" stroke-width="4"/><path d="M16 12v24M24 12v24M32 12v24" stroke="#1e3a8a" stroke-width="3"/></svg>
-        <h3>Radiators</h3>
-        <p>Overheating or coolant leaks — new radiator installed so your engine stays in the safe zone.</p>
+        <h3 data-i18n="svc7.t">Radiators</h3>
+        <p data-i18n="svc7.d">Overheating or coolant leaks — new radiator installed so your engine stays in the safe zone.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#d62828" stroke-width="4"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6" stroke="#1e3a8a" stroke-width="4"/><circle cx="24" cy="24" r="6" fill="#1e3a8a"/></svg>
-        <h3>Wheel Alignment</h3>
-        <p>Precise alignments that stop uneven tire wear and keep your car tracking straight.</p>
+        <h3 data-i18n="svc8.t">Wheel Alignment</h3>
+        <p data-i18n="svc8.d">Precise alignments that stop uneven tire wear and keep your car tracking straight.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><path d="M20 6h8v10l8 8v18H12V24l8-8V6z" stroke="#d62828" stroke-width="4" fill="none"/><path d="M18 30h12" stroke="#1e3a8a" stroke-width="4"/></svg>
-        <h3>Oil Change</h3>
-        <p>Quick, affordable oil changes to keep your engine clean and running strong.</p>
+        <h3 data-i18n="svc9.t">Oil Change</h3>
+        <p data-i18n="svc9.d">Quick, affordable oil changes to keep your engine clean and running strong.</p>
       </div>
       <div class="card">
         <svg class="ic" viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="18" stroke="#d62828" stroke-width="4"/><circle cx="24" cy="24" r="8" stroke="#1e3a8a" stroke-width="4"/><path d="M24 16v-6" stroke="#1e3a8a" stroke-width="4"/></svg>
-        <h3>Brakes</h3>
-        <p>Pads, rotors, and brake service — stop with confidence every single time.</p>
+        <h3 data-i18n="svc10.t">Brakes</h3>
+        <p data-i18n="svc10.d">Pads, rotors, and brake service — stop with confidence every single time.</p>
       </div>
     </div>
   </div>
@@ -263,24 +325,24 @@ footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter
 
 <section class="mobile" id="mobile">
   <div class="wrap">
-    <span class="kicker" style="background:#d62828">Mobile Service</span>
-    <h2>We <span class="r">Come</span> To You</h2>
-    <p class="lead">Flat at home? Blowout at work? Stuck on the roadside? Our mobile tire service brings the shop to you — including a <strong>mobile balancing machine</strong>, so your tires are mounted and balanced right there on the spot.</p>
+    <span class="kicker" style="background:#d62828" data-i18n="mob.kicker">Mobile Service</span>
+    <h2 data-i18n-html="mob.h2">We <span class="r">Come</span> To You</h2>
+    <p class="lead" data-i18n-html="mob.lead">Flat at home? Blowout at work? Stuck on the roadside? Our mobile tire service brings the shop to you — including a <strong>mobile balancing machine</strong>, so your tires are mounted and balanced right there on the spot.</p>
     <div class="mfeat">
       <div class="mbox">
-        <h3>Mobile Tire Change</h3>
-        <p>New or used tires installed at your location — same inventory, same fair prices, zero trip to the shop.</p>
+        <h3 data-i18n="mob1.t">Mobile Tire Change</h3>
+        <p data-i18n="mob1.d">New or used tires installed at your location — same inventory, same fair prices, zero trip to the shop.</p>
       </div>
       <div class="mbox">
-        <h3>Mobile Tire Repair</h3>
-        <p>Flat fixed wherever you're parked. Professional patch or plug service on-site.</p>
+        <h3 data-i18n="mob2.t">Mobile Tire Repair</h3>
+        <p data-i18n="mob2.d">Flat fixed wherever you're parked. Professional patch or plug service on-site.</p>
       </div>
       <div class="mbox">
-        <h3>Mobile Balancing</h3>
-        <p>Our van carries a balancing machine — your tires are balanced properly before we leave.</p>
+        <h3 data-i18n="mob3.t">Mobile Balancing</h3>
+        <p data-i18n="mob3.d">Our van carries a balancing machine — your tires are balanced properly before we leave.</p>
       </div>
     </div>
-    <a class="btn-red" href="tel:+12813155000">Call for Mobile Service</a>
+    <a class="btn-red" href="tel:+12813155000" data-i18n="mob.cta">Call for Mobile Service</a>
   </div>
 </section>
 
@@ -289,29 +351,29 @@ footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter
 <section class="why" id="why">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Why choose us</span>
-      <h2>Why Tires of Houston</h2>
+      <span class="eyebrow" data-i18n="why.eyebrow">Why choose us</span>
+      <h2 data-i18n="why.h2">Why Tires of Houston</h2>
     </div>
     <div class="why-grid">
       <div class="why-item">
         <div class="n">01</div>
-        <h3>Big Inventory</h3>
-        <p>We carry a lot of inventory of all sizes of tires — in stock and ready to mount.</p>
+        <h3 data-i18n="why1.t">Big Inventory</h3>
+        <p data-i18n="why1.d">We carry a lot of inventory of all sizes of tires — in stock and ready to mount.</p>
       </div>
       <div class="why-item">
         <div class="n">02</div>
-        <h3>Hard-to-Find Specialty</h3>
-        <p>Our specialty is hard-to-find tires other shops can't track down. If it exists, we'll find it.</p>
+        <h3 data-i18n="why2.t">Hard-to-Find Specialty</h3>
+        <p data-i18n="why2.d">Our specialty is hard-to-find tires other shops can't track down. If it exists, we'll find it.</p>
       </div>
       <div class="why-item">
         <div class="n">03</div>
-        <h3>Fair Prices</h3>
-        <p>Negotiable, honest pricing — customers say we're the best price in town.</p>
+        <h3 data-i18n="why3.t">Fair Prices</h3>
+        <p data-i18n="why3.d">Negotiable, honest pricing — customers say we're the best price in town.</p>
       </div>
       <div class="why-item">
         <div class="n">04</div>
-        <h3>Friendly Service</h3>
-        <p>A helpful owner and crew who do a fantastic job and treat you right.</p>
+        <h3 data-i18n="why4.t">Friendly Service</h3>
+        <p data-i18n="why4.d">A helpful owner and crew who do a fantastic job and treat you right.</p>
       </div>
     </div>
   </div>
@@ -320,34 +382,34 @@ footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter
 <section id="reviews">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Word on the street</span>
-      <h2>Customer Reviews</h2>
-      <p>Real reviews from our Facebook page.</p>
+      <span class="eyebrow" data-i18n="rev.eyebrow">Word on the street</span>
+      <h2 data-i18n="rev.h2">Customer Reviews</h2>
+      <p data-i18n="rev.sub">Real reviews from our Facebook page.</p>
     </div>
     <div class="rev-grid">
       <div class="rev">
         <div class="stars">★★★★★</div>
-        <p>"Satisfied with tire check, praised friendly customer service."</p>
+        <p data-i18n="rev1.q">"Satisfied with tire check, praised friendly customer service."</p>
         <div class="who">Ebony Whitmire</div>
-        <div class="src">via Facebook — recommends Tires of Houston</div>
+        <div class="src" data-i18n="rev.src">via Facebook — recommends Tires of Houston</div>
       </div>
       <div class="rev">
         <div class="stars">★★★★★</div>
-        <p>"Ill never buy tires anywhere else. This place is awesome."</p>
+        <p data-i18n="rev2.q">"Ill never buy tires anywhere else. This place is awesome."</p>
         <div class="who">David Whitaker</div>
-        <div class="src">via Facebook — recommends Tires of Houston</div>
+        <div class="src" data-i18n="rev.src">via Facebook — recommends Tires of Houston</div>
       </div>
       <div class="rev">
         <div class="stars">★★★★★</div>
-        <p>"Awesome owner and best Price in town very negotiable and helpful."</p>
+        <p data-i18n="rev3.q">"Awesome owner and best Price in town very negotiable and helpful."</p>
         <div class="who">Stack Sanchez</div>
-        <div class="src">via Facebook — recommends Tires of Houston</div>
+        <div class="src" data-i18n="rev.src">via Facebook — recommends Tires of Houston</div>
       </div>
       <div class="rev">
         <div class="stars">★★★★★</div>
-        <p>"Great customer service. They are very helpful &amp; do a fantastic job."</p>
+        <p data-i18n="rev4.q">"Great customer service. They are very helpful &amp; do a fantastic job."</p>
         <div class="who">Juan C Herrera</div>
-        <div class="src">via Facebook — recommends Tires of Houston</div>
+        <div class="src" data-i18n="rev.src">via Facebook — recommends Tires of Houston</div>
       </div>
     </div>
   </div>
@@ -358,31 +420,31 @@ footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter
 <section class="contact" id="contact">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Visit us</span>
-      <h2>Get In Touch</h2>
-      <p>Walk-ins welcome. Call ahead for mobile service or to check tire availability.</p>
+      <span class="eyebrow" data-i18n="con.eyebrow">Visit us</span>
+      <h2 data-i18n="con.h2">Get In Touch</h2>
+      <p data-i18n="con.sub">Walk-ins welcome. Call ahead for mobile service or to check tire availability.</p>
     </div>
     <div class="c-grid">
       <div class="c-box">
-        <h3>Call or Email</h3>
+        <h3 data-i18n="con.callh">Call or Email</h3>
         <a class="phone-big" href="tel:+12813155000">(281) 315-5000</a>
         <p><a href="mailto:tiresofhouston@gmail.com">tiresofhouston@gmail.com</a></p>
-        <p style="margin-top:14px"><a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" style="color:#fff;font-weight:600">Find us on Facebook →</a></p>
-        <h3 style="margin-top:24px">Hours</h3>
+        <p style="margin-top:14px"><a href="https://www.facebook.com/tiresofhouston/" target="_blank" rel="noopener" style="color:#fff;font-weight:600"><span data-i18n="con.fb">Find us on Facebook →</span></a></p>
+        <h3 style="margin-top:24px" data-i18n="con.hoursh">Hours</h3>
         <table class="hours">
-          <tr><td>Monday</td><td>8:30 AM – 6:00 PM</td></tr>
-          <tr><td>Tuesday</td><td>8:30 AM – 6:00 PM</td></tr>
-          <tr><td>Wednesday</td><td>8:30 AM – 6:00 PM</td></tr>
-          <tr><td>Thursday</td><td>8:30 AM – 6:00 PM</td></tr>
-          <tr><td>Friday</td><td>8:30 AM – 6:00 PM</td></tr>
-          <tr><td>Saturday</td><td>8:30 AM – 6:00 PM</td></tr>
-          <tr><td>Sunday</td><td>Closed</td></tr>
+          <tr><td data-i18n="day.mon">Monday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td data-i18n="day.tue">Tuesday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td data-i18n="day.wed">Wednesday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td data-i18n="day.thu">Thursday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td data-i18n="day.fri">Friday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td data-i18n="day.sat">Saturday</td><td>8:30 AM – 6:00 PM</td></tr>
+          <tr><td data-i18n="day.sun">Sunday</td><td data-i18n="day.closed">Closed</td></tr>
         </table>
       </div>
       <div class="c-box">
-        <h3>Address</h3>
+        <h3 data-i18n="con.addrh">Address</h3>
         <p>13125 Kuykendahl Rd<br>Houston, TX 77090</p>
-        <p style="margin:14px 0"><a class="btn-ghost" style="padding:12px 24px;font-size:.95rem" href="https://www.google.com/maps/search/?api=1&amp;query=Tires+of+Houston+13125+Kuykendahl+Rd+Houston+TX+77090" target="_blank" rel="noopener">Get Directions</a></p>
+        <p style="margin:14px 0"><a class="btn-ghost" style="padding:12px 24px;font-size:.95rem" href="https://www.google.com/maps/search/?api=1&amp;query=Tires+of+Houston+13125+Kuykendahl+Rd+Houston+TX+77090" target="_blank" rel="noopener" data-i18n="con.dir">Get Directions</a></p>
         <iframe class="map" title="Map to Tires of Houston" src="https://www.google.com/maps?q=13125+Kuykendahl+Rd+Houston+TX+77090&amp;output=embed" loading="lazy"></iframe>
       </div>
     </div>
@@ -393,15 +455,305 @@ footer .fbrand{color:#fff;font-family:'Oswald',sans-serif;font-weight:700;letter
   <div class="wrap">
     <div class="fbrand">TIRES OF HOUSTON</div>
     <p>13125 Kuykendahl Rd, Houston, TX 77090 · <a href="tel:+12813155000">(281) 315-5000</a></p>
-    <p>© 2026 Tires of Houston. Site built for the shop.</p>
+    <p data-i18n="foot.line">© 2026 Tires of Houston. Site built for the shop.</p>
   </div>
 </footer>
 
 <script>
 (function(){
+  /* burger menu */
   var b=document.getElementById('burger'),m=document.getElementById('mmenu');
   b.addEventListener('click',function(){m.classList.toggle('open');});
   m.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){m.classList.remove('open');});});
+
+  /* ---------------- i18n ---------------- */
+  var I18N={
+  en:{dir:"ltr",htmlLang:"en",label:"EN",
+    title:"Tires of Houston | Tire Shop & Auto Repair in Houston, TX",
+    meta:"Tires of Houston — tire shop & auto repair at 13125 Kuykendahl Rd, Houston, TX. New & used tires (specialists in hard-to-find sizes), tire repair, mobile tire service with balancing, suspension, starters, alternators, oil coolers, radiators, alignment, oil change, brakes. Open Mon–Sat 8:30–6:00. Call (281) 315-5000.",
+    s:{
+    "nav.services":"Services","nav.mobile":"Mobile","nav.reviews":"Reviews","nav.contact":"Contact","nav.call":"Call Now",
+    "menu.mobile":"Mobile Service","menu.call":"Call (281) 315-5000",
+    "hero.kicker":"Tire Shop & Auto Repair — Houston, TX",
+    "hero.h1":"Houston's <span class=\"r\">Tire</span> & <span class=\"r\">Repair</span> Shop",
+    "hero.sub":"Huge in-stock inventory of <b>new & used tires in all sizes</b> — specialists in <b>hard-to-find tires</b>. Plus full light repair, and a <b>mobile tire service that comes to you</b>.",
+    "hero.call":"Call (281) 315-5000","hero.dir":"Get Directions",
+    "hero.chip1":"<b>Open</b> Mon–Sat 8:30–6","hero.chip2":"<b>Hard-to-find</b> tires in stock","hero.chip3":"<b>Mobile</b> tire service",
+    "hero.fb":"Follow us on Facebook",
+    "svc.eyebrow":"What we do","svc.h2":"Services","svc.sub":"Tires, repair, and maintenance — done fast, done right, at a fair price.","svc.tag":"Our Specialty",
+    "svc1.t":"New & Used Tires","svc1.d":"All sizes, huge in-stock inventory — and we specialize in hard-to-find tires other shops can't get.",
+    "svc2.t":"Tire Repair","svc2.d":"Flats fixed fast — professional patches and plugs that get you back on the road safely.",
+    "svc3.t":"Mobile Tire Service","svc3.d":"Stuck at home, work, or roadside? We come to you — mobile tire change, repair, and balancing.",
+    "svc4.t":"Suspension Parts","svc4.d":"Shocks, struts, control arms and more — replaced and installed so your ride feels right again.",
+    "svc5.t":"Starter & Alternator","svc5.d":"Won't start? Dead battery every morning? We replace starters and alternators same-day.",
+    "svc6.t":"Oil Coolers","svc6.d":"Leaking or failing oil cooler? We replace them to keep your engine running cool and protected.",
+    "svc7.t":"Radiators","svc7.d":"Overheating or coolant leaks — new radiator installed so your engine stays in the safe zone.",
+    "svc8.t":"Wheel Alignment","svc8.d":"Precise alignments that stop uneven tire wear and keep your car tracking straight.",
+    "svc9.t":"Oil Change","svc9.d":"Quick, affordable oil changes to keep your engine clean and running strong.",
+    "svc10.t":"Brakes","svc10.d":"Pads, rotors, and brake service — stop with confidence every single time.",
+    "mob.kicker":"Mobile Service",
+    "mob.h2":"We <span class=\"r\">Come</span> To You",
+    "mob.lead":"Flat at home? Blowout at work? Stuck on the roadside? Our mobile tire service brings the shop to you — including a <strong>mobile balancing machine</strong>, so your tires are mounted and balanced right there on the spot.",
+    "mob1.t":"Mobile Tire Change","mob1.d":"New or used tires installed at your location — same inventory, same fair prices, zero trip to the shop.",
+    "mob2.t":"Mobile Tire Repair","mob2.d":"Flat fixed wherever you're parked. Professional patch or plug service on-site.",
+    "mob3.t":"Mobile Balancing","mob3.d":"Our van carries a balancing machine — your tires are balanced properly before we leave.",
+    "mob.cta":"Call for Mobile Service",
+    "why.eyebrow":"Why choose us","why.h2":"Why Tires of Houston",
+    "why1.t":"Big Inventory","why1.d":"We carry a lot of inventory of all sizes of tires — in stock and ready to mount.",
+    "why2.t":"Hard-to-Find Specialty","why2.d":"Our specialty is hard-to-find tires other shops can't track down. If it exists, we'll find it.",
+    "why3.t":"Fair Prices","why3.d":"Negotiable, honest pricing — customers say we're the best price in town.",
+    "why4.t":"Friendly Service","why4.d":"A helpful owner and crew who do a fantastic job and treat you right.",
+    "rev.eyebrow":"Word on the street","rev.h2":"Customer Reviews","rev.sub":"Real reviews from our Facebook page.",
+    "rev1.q":"\"Satisfied with tire check, praised friendly customer service.\"",
+    "rev2.q":"\"Ill never buy tires anywhere else. This place is awesome.\"",
+    "rev3.q":"\"Awesome owner and best Price in town very negotiable and helpful.\"",
+    "rev4.q":"\"Great customer service. They are very helpful & do a fantastic job.\"",
+    "rev.src":"via Facebook — recommends Tires of Houston",
+    "con.eyebrow":"Visit us","con.h2":"Get In Touch","con.sub":"Walk-ins welcome. Call ahead for mobile service or to check tire availability.",
+    "con.callh":"Call or Email","con.fb":"Find us on Facebook →","con.hoursh":"Hours",
+    "day.mon":"Monday","day.tue":"Tuesday","day.wed":"Wednesday","day.thu":"Thursday","day.fri":"Friday","day.sat":"Saturday","day.sun":"Sunday","day.closed":"Closed",
+    "con.addrh":"Address","con.dir":"Get Directions",
+    "foot.line":"© 2026 Tires of Houston. Site built for the shop."
+    }},
+  es:{dir:"ltr",htmlLang:"es",label:"ES",
+    title:"Tires of Houston | Llantera y reparación de autos en Houston, TX",
+    meta:"Tires of Houston — llantera y reparación de autos en 13125 Kuykendahl Rd, Houston, TX. Llantas nuevas y usadas (especialistas en tamaños difíciles de encontrar), reparación de llantas, servicio móvil con balanceo, suspensión, marchas, alternadores, enfriadores de aceite, radiadores, alineación, cambio de aceite, frenos. Abierto lun–sáb 8:30–6:00. Llama (281) 315-5000.",
+    s:{
+    "nav.services":"Servicios","nav.mobile":"Móvil","nav.reviews":"Reseñas","nav.contact":"Contacto","nav.call":"Llamar ahora",
+    "menu.mobile":"Servicio móvil","menu.call":"Llamar (281) 315-5000",
+    "hero.kicker":"Llantera y reparación de autos — Houston, TX",
+    "hero.h1":"Tienda de <span class=\"r\">llantas</span> y <span class=\"r\">reparación</span> en Houston",
+    "hero.sub":"Gran inventario en existencia de <b>llantas nuevas y usadas en todos los tamaños</b> — especialistas en <b>llantas difíciles de encontrar</b>. Además reparación ligera completa y un <b>servicio móvil de llantas que va hasta ti</b>.",
+    "hero.call":"Llamar (281) 315-5000","hero.dir":"Cómo llegar",
+    "hero.chip1":"<b>Abierto</b> lun–sáb 8:30–6","hero.chip2":"<b>Difíciles de encontrar</b> en existencia","hero.chip3":"<b>Servicio</b> móvil de llantas",
+    "hero.fb":"Síguenos en Facebook",
+    "svc.eyebrow":"Lo que hacemos","svc.h2":"Servicios","svc.sub":"Llantas, reparación y mantenimiento — rápido, bien hecho y a precio justo.","svc.tag":"Nuestra especialidad",
+    "svc1.t":"Llantas nuevas y usadas","svc1.d":"Todos los tamaños, gran inventario en existencia — y nos especializamos en llantas difíciles de encontrar que otros talleres no consiguen.",
+    "svc2.t":"Reparación de llantas","svc2.d":"Ponchaduras reparadas rápido — parches y tapones profesionales para que vuelvas al camino con seguridad.",
+    "svc3.t":"Servicio móvil de llantas","svc3.d":"¿Varado en casa, en el trabajo o en la carretera? Vamos hasta ti — cambio, reparación y balanceo móvil de llantas.",
+    "svc4.t":"Partes de suspensión","svc4.d":"Amortiguadores, struts, brazos de control y más — reemplazados e instalados para que tu auto se sienta bien de nuevo.",
+    "svc5.t":"Marcha y alternador","svc5.d":"¿No enciende? ¿Batería muerta cada mañana? Reemplazamos marchas y alternadores el mismo día.",
+    "svc6.t":"Enfriadores de aceite","svc6.d":"¿Enfriador de aceite con fugas o fallando? Los reemplazamos para mantener tu motor fresco y protegido.",
+    "svc7.t":"Radiadores","svc7.d":"Sobrecalentamiento o fugas de anticongelante — radiador nuevo instalado para mantener tu motor en zona segura.",
+    "svc8.t":"Alineación","svc8.d":"Alineaciones precisas que evitan el desgaste disparejo de las llantas y mantienen tu auto en línea recta.",
+    "svc9.t":"Cambio de aceite","svc9.d":"Cambios de aceite rápidos y económicos para mantener tu motor limpio y funcionando fuerte.",
+    "svc10.t":"Frenos","svc10.d":"Balatas, discos y servicio de frenos — frena con confianza siempre.",
+    "mob.kicker":"Servicio móvil",
+    "mob.h2":"Vamos <span class=\"r\">hasta ti</span>",
+    "mob.lead":"¿Ponchadura en casa? ¿Llanta reventada en el trabajo? ¿Varado en la carretera? Nuestro servicio móvil de llantas lleva el taller hasta ti — incluyendo una <strong>balanceadora móvil</strong>, para que tus llantas queden montadas y balanceadas ahí mismo.",
+    "mob1.t":"Cambio de llantas móvil","mob1.d":"Llantas nuevas o usadas instaladas donde estés — mismo inventario, mismos precios justos, sin ir al taller.",
+    "mob2.t":"Reparación móvil de llantas","mob2.d":"Ponchadura reparada donde estés estacionado. Servicio profesional de parche o tapón en el lugar.",
+    "mob3.t":"Balanceo móvil","mob3.d":"Nuestra camioneta lleva una balanceadora — tus llantas quedan bien balanceadas antes de irnos.",
+    "mob.cta":"Llamar por servicio móvil",
+    "why.eyebrow":"Por qué elegirnos","why.h2":"Por qué Tires of Houston",
+    "why1.t":"Gran inventario","why1.d":"Tenemos mucho inventario de llantas en todos los tamaños — en existencia y listas para montar.",
+    "why2.t":"Especialidad difícil de encontrar","why2.d":"Nuestra especialidad son las llantas difíciles de encontrar que otros talleres no pueden conseguir. Si existe, la encontramos.",
+    "why3.t":"Precios justos","why3.d":"Precios negociables y honestos — los clientes dicen que tenemos el mejor precio de la ciudad.",
+    "why4.t":"Servicio amable","why4.d":"Un dueño y equipo servicial que hacen un trabajo fantástico y te tratan bien.",
+    "rev.eyebrow":"Lo que dicen","rev.h2":"Reseñas de clientes","rev.sub":"Reseñas reales de nuestra página de Facebook.",
+    "rev1.q":"\"Satisfecha con la revisión de llantas, elogió el amable servicio al cliente.\"",
+    "rev2.q":"\"Nunca compraré llantas en otro lugar. Este lugar es increíble.\"",
+    "rev3.q":"\"Dueño increíble y mejor precio de la ciudad, muy negociable y servicial.\"",
+    "rev4.q":"\"Gran servicio al cliente. Son muy serviciales y hacen un trabajo fantástico.\"",
+    "rev.src":"vía Facebook — recomienda Tires of Houston",
+    "con.eyebrow":"Visítanos","con.h2":"Contáctanos","con.sub":"Sin cita, bienvenidos. Llama antes por servicio móvil o para verificar disponibilidad de llantas.",
+    "con.callh":"Llama o escribe","con.fb":"Encuéntranos en Facebook →","con.hoursh":"Horario",
+    "day.mon":"Lunes","day.tue":"Martes","day.wed":"Miércoles","day.thu":"Jueves","day.fri":"Viernes","day.sat":"Sábado","day.sun":"Domingo","day.closed":"Cerrado",
+    "con.addrh":"Dirección","con.dir":"Cómo llegar",
+    "foot.line":"© 2026 Tires of Houston. Sitio creado para el taller."
+    }},
+  ur:{dir:"rtl",htmlLang:"ur",label:"اردو",
+    title:"Tires of Houston | ہیوسٹن، ٹیکساس میں ٹائر شاپ اور آٹو مرمت",
+    meta:"Tires of Houston — ہیوسٹن، ٹیکساس میں ٹائر شاپ اور آٹو مرمت۔ نئے اور استعمال شدہ ٹائر (مشکل سائز کے ماہر)، ٹائر مرمت، بیلنسنگ والی موبائل ٹائر سروس، سسپنشن، اسٹارٹر، الٹرنیٹر، آئل کولر، ریڈی ایٹر، الائنمنٹ، آئل تبدیلی، بریکس۔ پیر–ہفتہ صبح 8:30–شام 6:00۔ کال کریں (281) 315-5000۔",
+    s:{
+    "nav.services":"خدمات","nav.mobile":"موبائل","nav.reviews":"آراء","nav.contact":"رابطہ","nav.call":"ابھی کال کریں",
+    "menu.mobile":"موبائل سروس","menu.call":"کال کریں (281) 315-5000",
+    "hero.kicker":"ٹائر شاپ اور آٹو مرمت — ہیوسٹن، ٹیکساس",
+    "hero.h1":"ہیوسٹن کی <span class=\"r\">ٹائر</span> اور <span class=\"r\">مرمت</span> کی دکان",
+    "hero.sub":"تمام سائزوں میں <b>نئے اور استعمال شدہ ٹائروں</b> کا بڑا ذخیرہ — <b>مشکل سے ملنے والے ٹائروں</b> کے ماہر۔ مکمل ہلکی مرمت کے ساتھ، اور ایک <b>موبائل ٹائر سروس جو آپ تک آتی ہے</b>۔",
+    "hero.call":"کال کریں (281) 315-5000","hero.dir":"راستہ دیکھیں",
+    "hero.chip1":"<b>کھلا</b> پیر–ہفتہ 8:30–6","hero.chip2":"<b>مشکل سے ملنے والے</b> ٹائر دستیاب","hero.chip3":"<b>موبائل</b> ٹائر سروس",
+    "hero.fb":"فیس بک پر فالو کریں",
+    "svc.eyebrow":"ہم کیا کرتے ہیں","svc.h2":"خدمات","svc.sub":"ٹائر، مرمت اور دیکھ بھال — تیز، درست اور مناسب قیمت پر۔","svc.tag":"ہماری خصوصیت",
+    "svc1.t":"نئے اور استعمال شدہ ٹائر","svc1.d":"تمام سائز، بڑا ذخیرہ — اور ہم مشکل سے ملنے والے ٹائروں میں مہارت رکھتے ہیں جو دوسری دکانیں حاصل نہیں کر سکتیں۔",
+    "svc2.t":"ٹائر کی مرمت","svc2.d":"پنکچر جلد ٹھیک — پیشہ ورانہ پیچ اور پلگ جو آپ کو بحفاظت سڑک پر واپس لاتے ہیں۔",
+    "svc3.t":"موبائل ٹائر سروس","svc3.d":"گھر، کام یا سڑک پر پھنس گئے؟ ہم آپ تک آتے ہیں — موبائل ٹائر تبدیلی، مرمت اور بیلنسنگ۔",
+    "svc4.t":"سسپنشن پارٹس","svc4.d":"شاکس، اسٹرٹس، کنٹرول آرمز اور مزید — تبدیل اور نصب شدہ تاکہ آپ کی سواری پھر سے بہترین لگے۔",
+    "svc5.t":"اسٹارٹر اور الٹرنیٹر","svc5.d":"گاڑی اسٹارٹ نہیں ہوتی؟ ہر صبح بیٹری ختم؟ ہم اسی دن اسٹارٹر اور الٹرنیٹر تبدیل کرتے ہیں۔",
+    "svc6.t":"آئل کولر","svc6.d":"لیک کرنے والا یا خراب آئل کولر؟ ہم انہیں تبدیل کرتے ہیں تاکہ آپ کا انجن ٹھنڈا اور محفوظ رہے۔",
+    "svc7.t":"ریڈی ایٹر","svc7.d":"انجن گرم ہونا یا کولنٹ کا لیک ہونا — نیا ریڈی ایٹر نصب تاکہ آپ کا انجن محفوظ حد میں رہے۔",
+    "svc8.t":"وہیل الائنمنٹ","svc8.d":"درست الائنمنٹ جو ٹائروں کے ناہموار گھساؤ کو روکتی ہے اور آپ کی گاڑی کو سیدھا رکھتی ہے۔",
+    "svc9.t":"آئل تبدیلی","svc9.d":"تیز اور سستے آئل کی تبدیلی تاکہ آپ کا انجن صاف اور مضبوط چلتا رہے۔",
+    "svc10.t":"بریکس","svc10.d":"پیڈز، روٹرز اور بریک سروس — ہر بار اعتماد کے ساتھ رکیں۔",
+    "mob.kicker":"موبائل سروس",
+    "mob.h2":"ہم <span class=\"r\">آپ تک</span> آتے ہیں",
+    "mob.lead":"گھر پر فلیٹ ٹائر؟ کام پر ٹائر پھٹ گیا؟ سڑک کنارے پھنس گئے؟ ہماری موبائل ٹائر سروس دکان آپ تک لاتی ہے — <strong>موبائل بیلنسنگ مشین</strong> سمیت، تاکہ آپ کے ٹائر وہیں موقع پر لگائے اور بیلنس کیے جائیں۔",
+    "mob1.t":"موبائل ٹائر تبدیلی","mob1.d":"آپ کی جگہ پر نئے یا استعمال شدہ ٹائر نصب — وہی ذخیرہ، وہی مناسب قیمتیں، دکان کا چکر نہیں۔",
+    "mob2.t":"موبائل ٹائر مرمت","mob2.d":"جہاں آپ کھڑے ہیں وہیں فلیٹ ٹھیک۔ موقع پر پیشہ ورانہ پیچ یا پلگ سروس۔",
+    "mob3.t":"موبائل بیلنسنگ","mob3.d":"ہماری وین میں بیلنسنگ مشین ہے — ہمارے جانے سے پہلے آپ کے ٹائر درست بیلنس ہوں گے۔",
+    "mob.cta":"موبائل سروس کے لیے کال کریں",
+    "why.eyebrow":"ہمیں کیوں چنیں","why.h2":"Tires of Houston کیوں",
+    "why1.t":"بڑا ذخیرہ","why1.d":"ہم تمام سائزوں کے ٹائروں کا بڑا ذخیرہ رکھتے ہیں — دستیاب اور لگانے کے لیے تیار۔",
+    "why2.t":"مشکل ٹائروں کی خصوصیت","why2.d":"ہماری خصوصیت مشکل سے ملنے والے ٹائر ہیں جو دوسری دکانیں تلاش نہیں کر سکتیں۔ اگر وہ موجود ہے تو ہم اسے ڈھونڈ لیں گے۔",
+    "why3.t":"مناسب قیمتیں","why3.d":"قابلِ گفتگو، ایماندارانہ قیمتیں — گاہک کہتے ہیں کہ شہر میں ہماری قیمت سب سے بہتر ہے۔",
+    "why4.t":"دوستانہ سروس","why4.d":"مددگار مالک اور عملہ جو بہترین کام کرتے ہیں اور آپ سے اچھا سلوک کرتے ہیں۔",
+    "rev.eyebrow":"لوگ کیا کہتے ہیں","rev.h2":"گاہکوں کی آراء","rev.sub":"ہمارے فیس بک پیج کی حقیقی آراء۔",
+    "rev1.q":"\"ٹائر چیک سے مطمئن، دوستانہ کسٹمر سروس کی تعریف کی۔\"",
+    "rev2.q":"\"میں کبھی کہیں اور ٹائر نہیں خریدوں گا۔ یہ جگہ زبردست ہے۔\"",
+    "rev3.q":"\"زبردست مالک اور شہر کی بہترین قیمت، بہت مناسب اور مددگار۔\"",
+    "rev4.q":"\"بہترین کسٹمر سروس۔ وہ بہت مددگار ہیں اور شاندار کام کرتے ہیں۔\"",
+    "rev.src":"فیس بک کے ذریعے — Tires of Houston کی سفارش کرتے ہیں",
+    "con.eyebrow":"ہم سے ملیں","con.h2":"رابطہ کریں","con.sub":"بغیر اپائنٹمنٹ تشریف لائیں۔ موبائل سروس یا ٹائر کی دستیابی کے لیے پہلے کال کریں۔",
+    "con.callh":"کال یا ای میل","con.fb":"ہمیں فیس بک پر تلاش کریں →","con.hoursh":"اوقات",
+    "day.mon":"پیر","day.tue":"منگل","day.wed":"بدھ","day.thu":"جمعرات","day.fri":"جمعہ","day.sat":"ہفتہ","day.sun":"اتوار","day.closed":"بند",
+    "con.addrh":"پتہ","con.dir":"راستہ دیکھیں",
+    "foot.line":"© 2026 Tires of Houston. دکان کے لیے بنائی گئی ویب سائٹ۔"
+    }},
+  zh:{dir:"ltr",htmlLang:"zh-CN",label:"中文",
+    title:"Tires of Houston | 休斯顿轮胎店与汽车维修",
+    meta:"Tires of Houston — 德克萨斯州休斯顿的轮胎店与汽车维修。地址：13125 Kuykendahl Rd。全新及二手轮胎（专营难找尺寸）、轮胎修补、带平衡机的上门轮胎服务、悬挂、起动机、发电机、机油冷却器、水箱、四轮定位、换机油、刹车。周一至周六 8:30–18:00。致电 (281) 315-5000。",
+    s:{
+    "nav.services":"服务","nav.mobile":"移动服务","nav.reviews":"评价","nav.contact":"联系","nav.call":"立即致电",
+    "menu.mobile":"移动轮胎服务","menu.call":"致电 (281) 315-5000",
+    "hero.kicker":"轮胎店与汽车维修 — 德克萨斯州休斯顿",
+    "hero.h1":"休斯顿<span class=\"r\">轮胎</span>与<span class=\"r\">维修</span>店",
+    "hero.sub":"各种尺寸的<b>全新及二手轮胎</b>现货充足 — 专营<b>难找的轮胎</b>。另提供全面的轻型维修，以及<b>上门轮胎服务</b>。",
+    "hero.call":"致电 (281) 315-5000","hero.dir":"获取路线",
+    "hero.chip1":"<b>营业</b> 周一–周六 8:30–6","hero.chip2":"<b>难找轮胎</b>现货","hero.chip3":"<b>上门</b>轮胎服务",
+    "hero.fb":"在 Facebook 上关注我们",
+    "svc.eyebrow":"我们的业务","svc.h2":"服务项目","svc.sub":"轮胎、维修与保养 — 快速、可靠、价格公道。","svc.tag":"我们的专长",
+    "svc1.t":"全新及二手轮胎","svc1.d":"各种尺寸，库存充足 — 专营其他店找不到的难找轮胎。",
+    "svc2.t":"轮胎修补","svc2.d":"快速补胎 — 专业补片与胶条，让您安全上路。",
+    "svc3.t":"上门轮胎服务","svc3.d":"在家、在公司或在路边抛锚？我们上门服务 — 移动换胎、补胎与动平衡。",
+    "svc4.t":"悬挂部件","svc4.d":"减震器、支柱、控制臂等 — 更换安装，让您的爱车恢复顺畅。",
+    "svc5.t":"起动机与发电机","svc5.d":"打不着火？每天早上电瓶没电？我们当天更换起动机和发电机。",
+    "svc6.t":"机油冷却器","svc6.d":"机油冷却器漏油或故障？我们为您更换，保护发动机正常散热。",
+    "svc7.t":"水箱","svc7.d":"发动机过热或冷却液泄漏 — 安装新水箱，让发动机保持在安全温度。",
+    "svc8.t":"四轮定位","svc8.d":"精准定位，防止轮胎偏磨，让车辆直线行驶。",
+    "svc9.t":"换机油","svc9.d":"快速实惠的换油服务，让发动机保持清洁强劲。",
+    "svc10.t":"刹车","svc10.d":"刹车片、刹车盘与刹车保养 — 每次刹车都信心十足。",
+    "mob.kicker":"上门服务",
+    "mob.h2":"我们<span class=\"r\">上门</span>为您服务",
+    "mob.lead":"在家爆胎？在公司轮胎出问题？在路边抛锚？我们的移动轮胎服务把店开到您身边 — 配备<strong>移动动平衡机</strong>，轮胎当场安装、当场做动平衡。",
+    "mob1.t":"上门换胎","mob1.d":"在您所在的位置安装全新或二手轮胎 — 同样的库存、同样的公道价格，不用跑一趟店。",
+    "mob2.t":"上门补胎","mob2.d":"在您停车的地方补胎。现场专业补片或胶条服务。",
+    "mob3.t":"上门动平衡","mob3.d":"我们的服务车配备动平衡机 — 离开前确保您的轮胎平衡到位。",
+    "mob.cta":"致电预约上门服务",
+    "why.eyebrow":"为什么选择我们","why.h2":"为什么选择 Tires of Houston",
+    "why1.t":"库存充足","why1.d":"各种尺寸轮胎大量现货 — 有货，随时安装。",
+    "why2.t":"专营难找轮胎","why2.d":"专营其他店找不到的难找轮胎。只要市面上有，我们就能找到。",
+    "why3.t":"价格公道","why3.d":"价格可议、诚实透明 — 顾客都说我们是全城最低价。",
+    "why4.t":"服务热情","why4.d":"热心的店主和团队，活儿做得漂亮，对人实在。",
+    "rev.eyebrow":"口碑","rev.h2":"顾客评价","rev.sub":"来自我们 Facebook 页面的真实评价。",
+    "rev1.q":"“轮胎检查很满意，客服态度友好，值得称赞。”",
+    "rev2.q":"“以后只在这里买轮胎。这家店太棒了。”",
+    "rev3.q":"“店主很棒，全城最低价，价格好商量，人很热心。”",
+    "rev4.q":"“客服非常好。他们很热心，活儿做得非常出色。”",
+    "rev.src":"来自 Facebook — 推荐 Tires of Houston",
+    "con.eyebrow":"欢迎光临","con.h2":"联系我们","con.sub":"欢迎直接到店。如需上门服务或查询轮胎库存，请提前致电。",
+    "con.callh":"致电或发邮件","con.fb":"在 Facebook 上找到我们 →","con.hoursh":"营业时间",
+    "day.mon":"周一","day.tue":"周二","day.wed":"周三","day.thu":"周四","day.fri":"周五","day.sat":"周六","day.sun":"周日","day.closed":"休息",
+    "con.addrh":"地址","con.dir":"获取路线",
+    "foot.line":"© 2026 Tires of Houston。本网站为本店制作。"
+    }},
+  vi:{dir:"ltr",htmlLang:"vi",label:"VI",
+    title:"Tires of Houston | Cửa hàng lốp xe & sửa chữa ô tô tại Houston, TX",
+    meta:"Tires of Houston — cửa hàng lốp & sửa chữa ô tô tại 13125 Kuykendahl Rd, Houston, TX. Lốp mới & đã qua sử dụng (chuyên lốp khó tìm), vá lốp, dịch vụ lốp lưu động có cân bằng động, treo, củ đề, máy phát điện, két dầu, két nước, cân chỉnh thước lái, thay dầu, phanh. Mở cửa T2–T7 8:30–6:00. Gọi (281) 315-5000.",
+    s:{
+    "nav.services":"Dịch vụ","nav.mobile":"Lưu động","nav.reviews":"Đánh giá","nav.contact":"Liên hệ","nav.call":"Gọi ngay",
+    "menu.mobile":"Dịch vụ lốp lưu động","menu.call":"Gọi (281) 315-5000",
+    "hero.kicker":"Cửa hàng lốp & sửa chữa ô tô — Houston, TX",
+    "hero.h1":"Cửa hàng <span class=\"r\">lốp xe</span> & <span class=\"r\">sửa chữa</span> tại Houston",
+    "hero.sub":"Kho hàng lớn với <b>lốp mới & lốp đã qua sử dụng đủ mọi kích cỡ</b> — chuyên <b>lốp khó tìm</b>. Kèm sửa chữa nhẹ đầy đủ, và <b>dịch vụ lốp lưu động đến tận nơi</b>.",
+    "hero.call":"Gọi (281) 315-5000","hero.dir":"Chỉ đường",
+    "hero.chip1":"<b>Mở cửa</b> T2–T7 8:30–6","hero.chip2":"<b>Lốp khó tìm</b> có sẵn","hero.chip3":"Dịch vụ lốp <b>lưu động</b>",
+    "hero.fb":"Theo dõi chúng tôi trên Facebook",
+    "svc.eyebrow":"Chúng tôi làm gì","svc.h2":"Dịch vụ","svc.sub":"Lốp xe, sửa chữa và bảo dưỡng — nhanh chóng, chuẩn xác, giá hợp lý.","svc.tag":"Chuyên môn của chúng tôi",
+    "svc1.t":"Lốp mới & lốp đã qua sử dụng","svc1.d":"Đủ mọi kích cỡ, kho hàng lớn — chuyên lốp khó tìm mà các tiệm khác không có.",
+    "svc2.t":"Vá lốp","svc2.d":"Vá lốp nhanh — vá trong, vá dùi chuyên nghiệp để bạn yên tâm lăn bánh.",
+    "svc3.t":"Dịch vụ lốp lưu động","svc3.d":"Kẹt ở nhà, ở chỗ làm hay bên đường? Chúng tôi đến tận nơi — thay lốp, vá lốp và cân bằng động lưu động.",
+    "svc4.t":"Phụ tùng treo","svc4.d":"Phuộc, giảm xóc, càng A và hơn nữa — thay thế, lắp đặt để xe bạn êm ái trở lại.",
+    "svc5.t":"Củ đề & máy phát điện","svc5.d":"Xe không nổ máy? Sáng nào ắc quy cũng hết? Chúng tôi thay củ đề và máy phát điện trong ngày.",
+    "svc6.t":"Két làm mát dầu","svc6.d":"Két dầu bị rò rỉ hay hỏng? Chúng tôi thay mới để động cơ luôn mát và được bảo vệ.",
+    "svc7.t":"Két nước","svc7.d":"Động cơ quá nhiệt hay rò rỉ nước làm mát — lắp két nước mới để động cơ luôn trong vùng an toàn.",
+    "svc8.t":"Cân chỉnh thước lái","svc8.d":"Cân chỉnh chính xác giúp lốp mòn đều và xe chạy thẳng.",
+    "svc9.t":"Thay dầu","svc9.d":"Thay dầu nhanh, giá rẻ để động cơ luôn sạch và khỏe.",
+    "svc10.t":"Phanh","svc10.d":"Má phanh, đĩa phanh và bảo dưỡng phanh — phanh tự tin mọi lúc.",
+    "mob.kicker":"Dịch vụ lưu động",
+    "mob.h2":"Chúng tôi <span class=\"r\">đến tận nơi</span>",
+    "mob.lead":"Lốp xẹp ở nhà? Nổ lốp ở chỗ làm? Kẹt bên đường? Dịch vụ lốp lưu động mang cả tiệm đến chỗ bạn — gồm <strong>máy cân bằng động di động</strong>, lốp được lắp và cân bằng ngay tại chỗ.",
+    "mob1.t":"Thay lốp lưu động","mob1.d":"Lắp lốp mới hoặc đã qua sử dụng tại chỗ bạn — cùng kho hàng, cùng giá tốt, khỏi cần đến tiệm.",
+    "mob2.t":"Vá lốp lưu động","mob2.d":"Vá lốp ngay nơi bạn đậu xe. Vá trong, vá dùi chuyên nghiệp tại chỗ.",
+    "mob3.t":"Cân bằng động lưu động","mob3.d":"Xe của chúng tôi mang theo máy cân bằng — lốp được cân chuẩn trước khi chúng tôi rời đi.",
+    "mob.cta":"Gọi dịch vụ lưu động",
+    "why.eyebrow":"Vì sao chọn chúng tôi","why.h2":"Vì sao chọn Tires of Houston",
+    "why1.t":"Kho hàng lớn","why1.d":"Kho lốp đủ mọi kích cỡ số lượng lớn — có sẵn, lắp ngay.",
+    "why2.t":"Chuyên lốp khó tìm","why2.d":"Chuyên lốp khó tìm mà các tiệm khác không kiếm được. Có trên đời là chúng tôi tìm ra.",
+    "why3.t":"Giá hợp lý","why3.d":"Giá thương lượng được, trung thực — khách hàng bảo đây là giá tốt nhất thành phố.",
+    "why4.t":"Phục vụ thân thiện","why4.d":"Chủ tiệm và đội ngũ nhiệt tình, làm việc xuất sắc và đối xử tử tế.",
+    "rev.eyebrow":"Khách hàng nói gì","rev.h2":"Đánh giá của khách hàng","rev.sub":"Đánh giá thật từ trang Facebook của chúng tôi.",
+    "rev1.q":"\"Hài lòng với việc kiểm tra lốp, khen dịch vụ khách hàng thân thiện.\"",
+    "rev2.q":"\"Tôi sẽ không bao giờ mua lốp ở nơi nào khác. Chỗ này tuyệt vời.\"",
+    "rev3.q":"\"Chủ tiệm tuyệt vời, giá tốt nhất thành phố, dễ thương lượng và nhiệt tình.\"",
+    "rev4.q":"\"Dịch vụ khách hàng tuyệt vời. Họ rất nhiệt tình và làm việc xuất sắc.\"",
+    "rev.src":"qua Facebook — giới thiệu Tires of Houston",
+    "con.eyebrow":"Ghé thăm chúng tôi","con.h2":"Liên hệ","con.sub":"Cứ ghé trực tiếp. Gọi trước nếu cần dịch vụ lưu động hoặc kiểm tra lốp còn hàng.",
+    "con.callh":"Gọi hoặc gửi email","con.fb":"Tìm chúng tôi trên Facebook →","con.hoursh":"Giờ mở cửa",
+    "day.mon":"Thứ Hai","day.tue":"Thứ Ba","day.wed":"Thứ Tư","day.thu":"Thứ Năm","day.fri":"Thứ Sáu","day.sat":"Thứ Bảy","day.sun":"Chủ Nhật","day.closed":"Nghỉ",
+    "con.addrh":"Địa chỉ","con.dir":"Chỉ đường",
+    "foot.line":"© 2026 Tires of Houston. Website được làm cho tiệm."
+    }}
+  };
+
+  var modal=document.getElementById('lang-modal');
+  var switcher=document.getElementById('lang-switch');
+  var curLabel=document.getElementById('lang-cur');
+
+  function applyLang(code){
+    var L=I18N[code]||I18N.en;
+    document.documentElement.lang=L.htmlLang;
+    document.documentElement.dir=L.dir;
+    document.title=L.title;
+    var md=document.querySelector('meta[name="description"]');
+    if(md)md.setAttribute('content',L.meta);
+    document.querySelectorAll('[data-i18n]').forEach(function(el){
+      var k=el.getAttribute('data-i18n');
+      if(L.s[k]!==undefined)el.textContent=L.s[k];
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+      var k=el.getAttribute('data-i18n-html');
+      if(L.s[k]!==undefined)el.innerHTML=L.s[k];
+    });
+    curLabel.textContent=L.label;
+    try{localStorage.setItem('toh-lang',code);}catch(e){}
+  }
+  function openPicker(){
+    modal.querySelectorAll('.lang-btn').forEach(function(x){
+      var cur=null;try{cur=localStorage.getItem('toh-lang');}catch(e){}
+      x.classList.toggle('current',x.getAttribute('data-lang')===cur);
+    });
+    modal.classList.remove('hidden');
+    document.body.classList.add('modal-open');
+  }
+  function closePicker(code){
+    if(code)applyLang(code);
+    modal.classList.add('hidden');
+    document.body.classList.remove('modal-open');
+  }
+  modal.querySelectorAll('.lang-btn').forEach(function(btn){
+    btn.addEventListener('click',function(){closePicker(btn.getAttribute('data-lang'));});
+  });
+  switcher.addEventListener('click',openPicker);
+
+  var saved=null;
+  try{saved=localStorage.getItem('toh-lang');}catch(e){}
+  if(saved&&I18N[saved]){
+    applyLang(saved);
+    modal.classList.add('hidden');
+  }else{
+    document.body.classList.add('modal-open');
+    applyLang('en');
+  }
 })();
 </script>
 </body>
